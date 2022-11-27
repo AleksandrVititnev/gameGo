@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33110.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "kursachASD", "kursachASD.vcxproj", "{ED377A51-D4C5-46EE-8E7F-169F36F0DE65}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ED377A51-D4C5-46EE-8E7F-169F36F0DE65}.Debug|x64.ActiveCfg = Debug|x64
+		{ED377A51-D4C5-46EE-8E7F-169F36F0DE65}.Debug|x64.Build.0 = Debug|x64
+		{ED377A51-D4C5-46EE-8E7F-169F36F0DE65}.Debug|x86.ActiveCfg = Debug|Win32
+		{ED377A51-D4C5-46EE-8E7F-169F36F0DE65}.Debug|x86.Build.0 = Debug|Win32
+		{ED377A51-D4C5-46EE-8E7F-169F36F0DE65}.Release|x64.ActiveCfg = Release|x64
+		{ED377A51-D4C5-46EE-8E7F-169F36F0DE65}.Release|x64.Build.0 = Release|x64
+		{ED377A51-D4C5-46EE-8E7F-169F36F0DE65}.Release|x86.ActiveCfg = Release|Win32
+		{ED377A51-D4C5-46EE-8E7F-169F36F0DE65}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D11D0C7D-2917-46D3-A742-959A820D0150}
+	EndGlobalSection
+EndGlobal
