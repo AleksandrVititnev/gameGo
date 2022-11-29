@@ -40,6 +40,8 @@ public:
 	int get_height();
 	int get_width();
 
+	gameField& operator=(gameField& _field_from);
+
 	void edit_node_free(int _place_hei, int _place_wid, bool _new_val);
 	void edit_node_free(id_node* _node, bool _new_val);
 	void edit_node_ko(int _place_hei, int _place_wid, bool _new_val);

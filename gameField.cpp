@@ -55,6 +55,26 @@ int gameField::get_width() {
 	return width_field;
 }
 
+gameField& gameField::operator=(gameField& _field_from) {
+	gameField new_field(_field_from.height_field, _field_from.width_field);
+
+	field = new node**[height_field];
+
+	for (int i{}; i < height_field; ++i) {
+		field[i] = new node*[width_field];
+
+		for (int j{}; j < width_field; ++j) {
+			field[i][j] = new node();
+
+			field[i][j]->is_free = _field_from.field[i][j]->is_free;
+			field[i][j]->is_ko = _field_from.field[i][j]->is_ko;
+			field[i][j]->whoIs = _field_from.field[i][j]->whoIs;
+		}
+	}
+	
+	return new_field;
+}
+
 void gameField::edit_node_free(int _place_hei, int _place_wid, bool _new_val) {
 	if (_place_hei > height_field || _place_wid > width_field) {
 		throw std::invalid_argument("GAME_FIELD::EDIT_NODE_FREE - Bad int for access node.");

@@ -135,10 +135,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="additionalFunctions.h" />
+    <ClInclude Include="AdditionalStructures.h" />
     <ClInclude Include="compLogic.h" />
     <ClInclude Include="gameField.h" />
     <ClInclude Include="gameLogic.h" />
     <ClInclude Include="idNode.h" />
+    <ClInclude Include="single_list.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
