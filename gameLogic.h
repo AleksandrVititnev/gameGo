@@ -8,7 +8,7 @@
 class gameLogic
 {
 private:
-
+	
 public:
 	gameLogic() { }
 

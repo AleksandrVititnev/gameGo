@@ -54,6 +54,62 @@ int gameField::get_height() {
 int gameField::get_width() {
 	return width_field;
 }
+int gameField::get_eatWhite() {
+	return eatWhite;
+}
+int gameField::get_eatBlack() {
+	return eatBlack;
+}
+
+bool gameField::is_self_destr(int _place_hei, int _place_wid, char _who) {
+	bool result = false;
+
+	if (_place_hei + 2 > height_field || _place_wid + 2 > width_field || _place_hei < 0 || _place_wid < 0) {
+		throw std::invalid_argument("GAME_FIELD::WHO_IS - Bad int for access node.");
+	}
+	if (_place_hei + 1 == height_field || _place_wid + 1 == width_field) {
+		if (field[_place_hei - 1][_place_wid]->whoIs != _who && field[_place_hei][_place_wid - 1]->whoIs != _who) {
+			result = true;
+		}
+		else if (field[_place_hei - 1][_place_wid]->whoIs != _who && field[_place_hei][_place_wid + 1]->whoIs != _who) {
+			result = true;
+		}
+		else if (field[_place_hei - 1][_place_wid]->whoIs != _who && field[_place_hei][_place_wid - 1]->whoIs != _who &&
+			field[_place_hei + 1][_place_wid]->whoIs != _who) {
+			result = true;
+		}
+		else if (field[_place_hei - 1][_place_wid]->whoIs != _who && field[_place_hei][_place_wid + 1]->whoIs != _who &&
+			field[_place_hei][_place_wid - 1]->whoIs != _who) {
+			result = true;
+		}
+	}
+	else if (_place_hei - 1 == height_field || _place_wid - 1 == width_field) {
+		if (field[_place_hei + 1][_place_wid]->whoIs != _who && field[_place_hei][_place_wid + 1]->whoIs != _who) {
+			result = true;
+		}
+		else if (field[_place_hei + 1][_place_wid]->whoIs != _who && field[_place_hei][_place_wid - 1]->whoIs != _who) {
+			result = true;
+		}
+		else if (field[_place_hei - 1][_place_wid]->whoIs != _who && field[_place_hei][_place_wid + 1]->whoIs != _who &&
+			field[_place_hei + 1][_place_wid]->whoIs != _who) {
+			result = true;
+		}
+		else if (field[_place_hei + 1][_place_wid]->whoIs != _who && field[_place_hei][_place_wid + 1]->whoIs != _who &&
+			field[_place_hei][_place_wid - 1]->whoIs != _who) {
+			result = true;
+		}
+	}
+	else if (field[_place_hei + 1][_place_wid]->whoIs != _who && field[_place_hei][_place_wid + 1]->whoIs != _who &&
+		field[_place_hei][_place_wid - 1]->whoIs != _who && field[_place_hei - 1][_place_wid]->whoIs != _who) {
+		result = true;;
+	}
+
+	return result;
+}
+
+bool gameField::is_self_destr(id_node* _node, char _who) {
+
+}
 
 gameField& gameField::operator=(gameField& _field_from) {
 	gameField new_field(_field_from.height_field, _field_from.width_field);

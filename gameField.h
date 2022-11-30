@@ -16,9 +16,12 @@ private:
 
 	int height_field;		// Выстота поля.
 	int width_field;		// Ширина поля.
+	int eatWhite;
+	int eatBlack;
 	node*** field;			// Указатель содержащий само поле height_field на width_field.
 public:
-	gameField(int _height, int _width) : height_field(_height), width_field(_width), field(nullptr) {
+	gameField(int _height, int _width) : height_field(_height), 
+		width_field(_width), field(nullptr), eatBlack(0), eatWhite(0) {
 		field = new node**[height_field];
 
 		for (int i{}; i < height_field; ++i) {
@@ -36,9 +39,13 @@ public:
 	bool is_ko(id_node* _node);
 	char who_is(int _place_hei, int _place_wid);
 	char who_is(id_node* _node);
+	bool is_self_destr(int _place_hei, int _place_wid, char _who);
+	bool is_self_destr(id_node* _node, char _who);
 
 	int get_height();
 	int get_width();
+	int get_eatWhite();
+	int get_eatBlack();
 
 	gameField& operator=(gameField& _field_from);
 
