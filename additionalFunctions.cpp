@@ -1,6 +1,6 @@
 #include "additionalFunctions.h"
 
-int get_mark_field(gameField* _field,  char _who) {
+int get_mark_field(gameField* _field) {
 	int score = 0;
 	int tempScore = 0;
 	bool isBlack = false;

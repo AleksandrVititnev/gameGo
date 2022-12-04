@@ -108,7 +108,7 @@ bool gameField::is_self_destr(int _place_hei, int _place_wid, char _who) {
 }
 
 bool gameField::is_self_destr(id_node* _node, char _who) {
-
+	return is_self_destr(_node->place_hei, _node->place_wid, _who);
 }
 
 gameField& gameField::operator=(gameField& _field_from) {

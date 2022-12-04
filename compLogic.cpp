@@ -9,37 +9,37 @@ compLogic::minmax_container* compLogic::min_max(gameField& _field, id_node* turn
 	gameField copy_field = _field;														// Копия игрового поля.
 	int now_mark;																		// Переменная для хранения оценки.
 
-	if (depth == 4) {														// Встречаем 5-ый ход и обрабатываем последний.
-		_field.make_turn(turn, who);										// Поставить фгуру на стол.
-		rules->apply_turn(&_field, turn);									// Применить ход (распознать ситуации захвата противника).
+	if (depth == 4) {															// Встречаем 5-ый ход и обрабатываем последний.
+		copy_field.make_turn(turn, who);										// Поставить фгуру на стол.
+		rules->apply_turn(&copy_field, turn);									// Применить ход (распознать ситуации захвата противника).
 
-		now_mark = get_mark_field(&_field, who);							// Получить оценку поля.
+		now_mark = get_mark_field(&copy_field);									// Получить оценку поля.
 
-		if (who == 'w') {													// Ход был за нами.
+		if (who == 'w') {														// Ход был за нами.
 			mmc = new minmax_container(turn, now_mark, _alpha, now_mark);
 		}
-		else {																// Ход был за противником.
+		else {																	// Ход был за противником.
 			mmc = new minmax_container(turn, now_mark, now_mark, _beta);
 		}
 	}
 	else {
 		if (turn) {																					// Если не корень абстрактного дерева, то сделать ход.
-			_field.make_turn(turn, who);
-			rules->apply_turn(&_field, turn);
+			copy_field.make_turn(turn, who);
+			rules->apply_turn(&copy_field, turn);
 		}
-		for (int i{}; i < _field.get_height(); ++i) {
-			for (int j{}; j < _field.get_width(); ++j) {
+		for (int i{}; i < copy_field.get_height(); ++i) {
+			for (int j{}; j < copy_field.get_width(); ++j) {
 				now_turn = new id_node(i, j);
 
-				if (_field.is_free(now_turn) && rules->can_make_turn(&_field, now_turn, who)) {		// Если можем сходить.
+				if (copy_field.is_free(now_turn) && rules->can_make_turn(&copy_field, now_turn, who)) {		// Если можем сходить.
 
 					if (who == 'w') {																// Ход был за нами.
 						depth++;
-						mmc = min_max(_field, now_turn, _alpha, _beta, 'b');
+						mmc = min_max(copy_field, now_turn, _alpha, _beta, 'b', depth);
 					}
 					else {																			// Ход был за противником.
 						depth++;
-						mmc = min_max(_field, now_turn, _alpha, _beta, 'w');
+						mmc = min_max(copy_field, now_turn, _alpha, _beta, 'w', depth);
 					}
 
 					lst_cont->push_back(mmc);														// Добавить в список контейнер с информацией о ходе
@@ -78,6 +78,7 @@ compLogic::minmax_container* compLogic::min_max(gameField& _field, id_node* turn
 	return mmc;
 }
 
+// Обёртка для вызова функции минимакса.
 id_node* compLogic::get_next_turn(gameField* _field) {
 
 	minmax_container* mmc = nullptr;
