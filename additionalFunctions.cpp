@@ -23,7 +23,7 @@ int get_mark_field(gameField* _field) {
 					score += tempScore * 2;
 				}
 
-				isBlack = true;
+				isWhite = true;
 			}
 			else {
 				tempScore++;
@@ -33,6 +33,20 @@ int get_mark_field(gameField* _field) {
 
 	score -= _field->get_eatWhite();
 	score -= _field->get_eatBlack();
+
+	return score;
+}
+
+int get_mark_field2(gameField* _field, char who) {
+	int score = 0;
+	int tempScore = 0;
+	bool isNeed = false;
+
+	for (int i{}; i < _field->get_height(); ++i) {
+		for (int j{}; j < _field->get_width(); ++j) {
+
+		}
+	}
 
 	return score;
 }

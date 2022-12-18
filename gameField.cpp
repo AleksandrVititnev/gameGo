@@ -242,3 +242,15 @@ void gameField::restore_default(id_node* _node) {
 
 	return;
 }
+
+gameField::~gameField() {
+	for (int i{}; i < height_field; ++i) {
+		for (int j{}; j < width_field; ++j) {
+			delete field[i][j];
+		}
+
+		delete[] field[i];
+	}
+
+	delete[] field;
+}

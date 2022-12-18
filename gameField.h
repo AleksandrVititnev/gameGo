@@ -33,6 +33,24 @@ public:
 		}
 	}
 
+	gameField(gameField* _field) : eatBlack(0), eatWhite(0){
+		height_field = _field->height_field;
+		width_field = _field->width_field;
+		field = new node * *[height_field];
+
+		for (int i{}; i < height_field; ++i) {
+			field[i] = new node * [width_field];
+
+			for (int j{}; j < width_field; ++j) {
+				field[i][j] = new node();
+
+				field[i][j]->is_free = _field->field[i][j]->is_free;
+				field[i][j]->is_ko = _field->field[i][j]->is_ko;
+				field[i][j]->whoIs = _field->field[i][j]->whoIs;
+			}
+		}
+	}
+
 	bool is_free(int _place_hei, int _place_wid);
 	bool is_free(id_node* _node);
 	bool is_ko(int _place_hei, int _place_wid);
@@ -61,6 +79,6 @@ public:
 	void restore_default(int _place_hei, int _place_wid);
 	void restore_default(id_node* _node);
 
-	~gameField() { }
+	~gameField();
 };
 
