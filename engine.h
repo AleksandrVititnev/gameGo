@@ -19,6 +19,7 @@ private:
 	gameLogic* rule;
 	compLogic* AI;
 	id_node* turn;
+	id_node* aiTurn;
 
 public:
 	engine(sf::String _file);

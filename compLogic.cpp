@@ -103,8 +103,9 @@ compLogic::minmax_container* compLogic::min_max2(gameField* field, int _alpha, i
 	}*/
 
 	if (depth == 4) {
-		//now_mark = get_mark_field(copy);
-		now_mark = counter;
+		//now_mark = get_mark_field(field);
+		//now_mark = counter;
+		now_mark = rand() % 100;
 
 		mmc = new minmax_container(nullptr, now_mark);
 
@@ -127,7 +128,7 @@ compLogic::minmax_container* compLogic::min_max2(gameField* field, int _alpha, i
 
 						mmc = min_max2(copy, _alpha, _beta, 'b', depth);
 
-						mmc->next_turn = now_turn; // mmc иногда nullptr
+						if (mmc) mmc->next_turn = now_turn; // mmc иногда nullptr
 						
 						depth--;
 					}
@@ -139,16 +140,16 @@ compLogic::minmax_container* compLogic::min_max2(gameField* field, int _alpha, i
 
 						mmc = min_max2(copy, _alpha, _beta, 'w', depth);
 
-						mmc->next_turn = now_turn; // mmc иногда nullptr
+						if (mmc) mmc->next_turn = now_turn; // mmc иногда nullptr
 
 						depth--;
 					}
 
-					if (who == 'w') {
+					if (mmc && who == 'w') {
 						mmc_sel = max_mm(mmc_sel, mmc);
 						_alpha = mmc_sel->mark;
 					}
-					if (who == 'b') {
+					if (mmc && who == 'b') {
 						mmc_sel = min_mm(mmc_sel, mmc);
 						_beta = mmc_sel->mark;
 					}
@@ -175,5 +176,5 @@ id_node* compLogic::get_next_turn(gameField* _field) {
 	//gameField copy_field(_field);
 	mmc = min_max2(_field, mInf, pInf, 'w');
 
-	return mmc->next_turn;
+	return mmc ? mmc->next_turn : nullptr;
 }

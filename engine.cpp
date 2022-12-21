@@ -10,6 +10,7 @@ engine::engine(sf::String _file) {
 	rule = new gameLogic();
 	AI = new compLogic(rule);
 	turn = new id_node(0, 0);
+	aiTurn = nullptr;
 }
 
 void engine::start() {
@@ -32,13 +33,15 @@ void engine::start() {
 						turn->place_hei = pos.y / 64;
 						if (rule->can_make_turn(field, turn, 'b')) {
 							field->make_turn(turn, 'b');
+							rule->apply_turn(field, turn);
 							wasTurn = true;
 						}
+						/*std::cout << get_mark_field(field) << '\n';
 						if (wasTurn) {
-							turn = AI->get_next_turn(field);
-							field->make_turn(turn, 'w');
+							aiTurn = AI->get_next_turn(field);
+							if (aiTurn) field->make_turn(aiTurn, 'w');
 							wasTurn = false;
-						}
+						}*/
 					}
 					if (event.key.code == sf::Mouse::Right) {
 						std::cout << "IsClicked!\n";

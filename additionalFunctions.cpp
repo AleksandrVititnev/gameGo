@@ -1,7 +1,7 @@
 #include "additionalFunctions.h"
 
 int get_mark_field(gameField* _field) {
-	int score = 0;
+	/*int score = 0;
 	int tempScore = 0;
 	bool isBlack = false;
 	bool isWhite = false;
@@ -32,9 +32,11 @@ int get_mark_field(gameField* _field) {
 	}
 
 	score -= _field->get_eatWhite();
-	score -= _field->get_eatBlack();
+	score -= _field->get_eatBlack();*/
 
-	return score;
+	return rand() % 100;
+
+	//return score;
 }
 
 int get_mark_field2(gameField* _field, char who) {

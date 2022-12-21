@@ -16,5 +16,13 @@ bool gameLogic::can_make_turn(gameField* _field, id_node* _node, char _who) {
 }
 
 void gameLogic::apply_turn(gameField* _field, id_node* _node) {
-	// DO SOMETHING
+	for (int i{}; i < _field->get_height(); ++i) {
+		for (int j{}; j < _field->get_width(); ++j) {
+			if (_field->get_brethe(i, j) == 0) {
+				_field->restore_default(i, j);
+			}
+		}
+	}
+
+	return;
 }

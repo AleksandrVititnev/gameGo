@@ -10,8 +10,9 @@ private:
 		bool is_free;		// Пустая ли клетка.
 		bool is_ko;			// Правило КО.
 		char whoIs;			// Чья клетка на данный момент ('w' - белые, 'b' - чёрные, 'n' - ничейная).
+		int freeBrethe;
 
-		node() : is_free(true), is_ko(false), whoIs('n') { }
+		node() : is_free(true), is_ko(false), whoIs('n'), freeBrethe(4) { }
 	};
 
 	int height_field;		// Выстота поля.
@@ -64,6 +65,7 @@ public:
 	int get_width();
 	int get_eatWhite();
 	int get_eatBlack();
+	int get_brethe(int _place_hei, int _place_wid);
 
 	gameField& operator=(gameField& _field_from);
 
@@ -73,11 +75,15 @@ public:
 	void edit_node_ko(id_node* _node, bool _new_val);
 	void edit_node_who(int _place_hei, int _place_wid, char _new_val);
 	void edit_node_who(id_node* _node, char _new_val);
+	void edit_node_brethe(int _place_hei, int _place_wid, int _new_val);
+	void edit_node_brethe(id_node* _node, int _new_val);
 
 	void make_turn(int _place_hei, int _place_wid, char _new_val);
 	void make_turn(id_node* _node, char _new_val);
 	void restore_default(int _place_hei, int _place_wid);
 	void restore_default(id_node* _node);
+	
+	void re_calc_brethe(id_node* _node);
 
 	~gameField();
 };
