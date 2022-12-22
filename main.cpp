@@ -4,7 +4,7 @@
 
 int main()
 {
-    engine eng("map.png");
+    engine eng("map4.png", "CyrilicOld.TTF");
     eng.start();
 
     return 0;

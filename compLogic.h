@@ -25,12 +25,14 @@ private:
 	minmax_container* max_mm(minmax_container* _what, minmax_container* _with) {
 		if (!_what) return _with;
 		if (!_with) return _what;
+		if (_what->mark == _with->mark) return _what;
 
 		return _what->mark > _with->mark ? _what : _with;
 	}
 	minmax_container* min_mm(minmax_container* _what, minmax_container* _with) {
 		if (!_what) return _with;
 		if (!_with) return _what;
+		if (_what->mark == _with->mark) return _what;
 
 		return _what->mark < _with->mark ? _what : _with;
 	}

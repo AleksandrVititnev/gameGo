@@ -91,23 +91,11 @@ compLogic::minmax_container* compLogic::min_max2(gameField* field, int _alpha, i
 	//single_list<minmax_container*>* lst_cont = new single_list<minmax_container*>();
 	gameField* copy = nullptr;
 	int now_mark;
-	counter++;
 
-	/*if (counter == 223) {
-		for (int i{}; i < 9; ++i) {
-			for (int j{}; j < 9; ++j) {
-				std::cout << i << "^" << j << ":" << field->who_is(i, j) << '*';
-			}
-			std::cout << "\n";
-		}
-	}*/
+	if (depth == 3) {
+		now_mark = get_mark_field2(field);
 
-	if (depth == 4) {
-		//now_mark = get_mark_field(field);
-		//now_mark = counter;
-		now_mark = rand() % 100;
-
-		mmc = new minmax_container(nullptr, now_mark);
+		mmc = new minmax_container(new id_node(0,0), now_mark);
 
 		return mmc;
 	}
@@ -128,7 +116,10 @@ compLogic::minmax_container* compLogic::min_max2(gameField* field, int _alpha, i
 
 						mmc = min_max2(copy, _alpha, _beta, 'b', depth);
 
-						if (mmc) mmc->next_turn = now_turn; // mmc иногда nullptr
+						if (mmc) {
+							mmc->next_turn->place_hei = now_turn->place_hei;
+							mmc->next_turn->place_wid = now_turn->place_wid;
+						}
 						
 						depth--;
 					}
@@ -140,7 +131,10 @@ compLogic::minmax_container* compLogic::min_max2(gameField* field, int _alpha, i
 
 						mmc = min_max2(copy, _alpha, _beta, 'w', depth);
 
-						if (mmc) mmc->next_turn = now_turn; // mmc иногда nullptr
+						if (mmc) {
+							mmc->next_turn->place_hei = now_turn->place_hei;
+							mmc->next_turn->place_wid = now_turn->place_wid;
+						}
 
 						depth--;
 					}
@@ -166,6 +160,7 @@ compLogic::minmax_container* compLogic::min_max2(gameField* field, int _alpha, i
 	if (copy) {
 		delete copy;
 	}
+	if (now_turn) delete now_turn;
 	return mmc_sel;
 }
 
@@ -175,6 +170,8 @@ id_node* compLogic::get_next_turn(gameField* _field) {
 	minmax_container* mmc = nullptr;
 	//gameField copy_field(_field);
 	mmc = min_max2(_field, mInf, pInf, 'w');
+	
+	if (!mmc) mmc = new minmax_container(new id_node(-1, -1), 0);
 
-	return mmc ? mmc->next_turn : nullptr;
+	return mmc->next_turn;
 }

@@ -153,6 +153,12 @@
     <ClInclude Include="idNode.h" />
     <ClInclude Include="single_list.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\back.png" />
+    <Image Include="images\map.png" />
+    <Image Include="images\map3.png" />
+    <Image Include="images\map4.png" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
