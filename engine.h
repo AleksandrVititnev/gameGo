@@ -18,7 +18,10 @@ private:
 	sf::Sprite s_map;
 	sf::Font font;
 	sf::Text textWin;
-	
+	sf::Text textPassUser;
+	sf::Text textPassComp;
+	sf::Text info;
+
 	gameField* field;
 	gameLogic* rule;
 	compLogic* AI;
@@ -32,10 +35,15 @@ private:
 	bool passFirst;
 	bool passSecond;
 	bool end;
+	bool showText;
+
+	int counter;
 public:
 	engine(sf::String _file, sf::String _fileFont);
 
 	void start();
 	void comp_turn(bool& _wasTurn);
+	void setUpText();
+	void draw();
+	void aboutGame();
 };
-

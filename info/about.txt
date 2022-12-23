@@ -1,0 +1,9 @@
+By student 21-IVT-3 Aleksandr Vititnev.
+Controls:
+F1 - show territory
+F2 - enable / disable ai
+F3 - hide text about win / lose
+F4 - enable / disable easy
+F5 - instruction
+R - restart game
+P - pass
