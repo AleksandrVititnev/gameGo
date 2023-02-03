@@ -1,6 +1,7 @@
 //File contain game logic, game rules.
 #pragma once
 #include <stdexcept>
+#include <iostream>
 #include "gameField.h"
 #include "additionalFunctions.h"
 #include "idNode.h"
@@ -8,7 +9,7 @@
 class gameLogic
 {
 private:
-
+	
 public:
 	gameLogic() { }
 

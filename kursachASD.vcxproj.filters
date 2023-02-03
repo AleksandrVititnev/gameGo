@@ -30,6 +30,9 @@
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="engine.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="additionalFunctions.h">
@@ -47,5 +50,28 @@
     <ClInclude Include="idNode.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="AdditionalStructures.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="single_list.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="engine.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="images\map.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\map3.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\map4.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="images\back.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
 </Project>
